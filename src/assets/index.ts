@@ -1,0 +1,9 @@
+export { default as Logo } from "./logo.svg";
+export { default as Badminton } from "./badminton.svg";
+export { default as Pingpong } from "./pingpong.svg";
+export { default as GirlSports } from "./girlSports.svg";
+export { default as Baseball } from "./baseball.svg";
+export { default as Basketball } from "./basketball.svg";
+export { default as Soccer } from "./soccer.svg";
+export { default as Gym } from "./gym.svg";
+export { default as Volleyball } from "./volleyball.svg";
