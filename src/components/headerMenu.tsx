@@ -1,14 +1,27 @@
 import styled from "styled-components";
 import { HeaderLogo } from "../assets";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const HeaderMenu = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const onSchdule = () => {
+    navigate("/schedule");
+  };
   return (
     <Wrapper>
       <Field>
         <Logo src={HeaderLogo} />
         <OptionContainer>
-          <Option>엑셀 다운로드</Option>
-          <Option>일정 변경</Option>
+          <Option color={pathname === "/excelDown" ? "#9EFF00" : "#585858"}>
+            엑셀 다운로드
+          </Option>
+          <Option
+            color={pathname === "/schedule" ? "#9EFF00" : "#585858"}
+            onClick={onSchdule}
+          >
+            일정 변경
+          </Option>
         </OptionContainer>
       </Field>
       <UserName>김현태 선생님</UserName>
@@ -36,10 +49,11 @@ const Logo = styled.img`
   margin-left: 32px;
 `;
 const Option = styled.p`
-  color: #585858;
+  color: ${props => props.color};
   height: fit-content;
   font-size: 20px;
   margin-top: 5px;
+  cursor: pointer;
 `;
 
 const UserName = styled.p`
