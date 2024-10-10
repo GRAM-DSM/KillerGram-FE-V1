@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 interface ButtonProps {
   children: string;
+  onClick: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children }) => {
-  return <ButtonStyle>{children}</ButtonStyle>;
+export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+  return <ButtonStyle onClick={onClick}>{children}</ButtonStyle>;
 };
 
 const ButtonStyle = styled.button`
