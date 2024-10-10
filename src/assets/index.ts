@@ -7,3 +7,4 @@ export { default as Basketball } from "./basketball.svg";
 export { default as Soccer } from "./soccer.svg";
 export { default as Gym } from "./gym.svg";
 export { default as Volleyball } from "./volleyball.svg";
+export { default as HeaderLogo } from "./headerLogo.svg";
