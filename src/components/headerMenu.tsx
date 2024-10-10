@@ -8,12 +8,18 @@ export const HeaderMenu = () => {
   const onSchdule = () => {
     navigate("/schedule");
   };
+  const onExcel = () => {
+    navigate("/excelDown");
+  };
   return (
     <Wrapper>
       <Field>
         <Logo src={HeaderLogo} />
         <OptionContainer>
-          <Option color={pathname === "/excelDown" ? "#9EFF00" : "#585858"}>
+          <Option
+            color={pathname === "/excelDown" ? "#9EFF00" : "#585858"}
+            onClick={onExcel}
+          >
             엑셀 다운로드
           </Option>
           <Option
