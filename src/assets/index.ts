@@ -1,4 +1,4 @@
-export { default as Logo } from "./logo.svg";
+export { default as LogoImg } from "./logo.svg";
 export { default as Badminton } from "./badminton.svg";
 export { default as Pingpong } from "./pingpong.svg";
 export { default as GirlSports } from "./girlSports.svg";
