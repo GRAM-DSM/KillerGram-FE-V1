@@ -2,16 +2,20 @@ import styled from "styled-components";
 
 interface ExerciseProps {
   LogoName: string;
+  ExercizeName: string;
 }
 
-export const Exercise: React.FC<ExerciseProps> = ({ LogoName }) => {
+export const ExerciseField: React.FC<ExerciseProps> = ({
+  LogoName,
+  ExercizeName,
+}) => {
   return (
     <Wrapper>
       <Header>
         <ImgField>
-          <img src={LogoName} />
+          <ExImg src={LogoName} />
         </ImgField>
-        <Title>배드민턴</Title>
+        <Title>{ExercizeName}</Title>
       </Header>
       <BtnField>
         <ExcelBtn>엑셀 다운로드</ExcelBtn>
@@ -19,6 +23,8 @@ export const Exercise: React.FC<ExerciseProps> = ({ LogoName }) => {
     </Wrapper>
   );
 };
+
+const ExImg = styled.img``;
 
 const Header = styled.div`
   display: flex;
@@ -43,6 +49,7 @@ const ExcelBtn = styled.button`
 const ImgField = styled.div`
   display: flex;
   justify-content: center;
+  height: 183px;
 `;
 
 const Title = styled.p`
