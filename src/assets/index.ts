@@ -1,4 +1,3 @@
-export { default as LogoImg } from "./logo.svg";
 export { default as Badminton } from "./badminton.svg";
 export { default as Pingpong } from "./pingpong.svg";
 export { default as GirlSports } from "./girlSports.svg";
@@ -8,3 +7,5 @@ export { default as Soccer } from "./soccer.svg";
 export { default as Gym } from "./gym.svg";
 export { default as Volleyball } from "./volleyball.svg";
 export { default as HeaderLogo } from "./headerLogo.svg";
+export { default as SearchIcon } from "./searchIcon.svg";
+export { default as LogoImg } from "./logo.svg";
