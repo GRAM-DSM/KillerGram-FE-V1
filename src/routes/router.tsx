@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "../pages/login";
-import { ExcelDown } from "../pages/excelDownload";
 import { Layout } from "./layout";
-import { Schedule } from "../pages/schedule";
+import { ExcelDown, Login, Schedule } from "../pages";
 
 export const MainRouter = () => {
   return (
