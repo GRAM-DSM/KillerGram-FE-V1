@@ -60,6 +60,7 @@ const Option = styled.p`
   font-size: 20px;
   margin-top: 5px;
   cursor: pointer;
+  white-space: nowrap;
 `;
 
 const UserName = styled.p`
