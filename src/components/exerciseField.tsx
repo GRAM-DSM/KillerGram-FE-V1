@@ -5,10 +5,7 @@ interface ExerciseProps {
   ExercizeName: string;
 }
 
-export const ExerciseField: React.FC<ExerciseProps> = ({
-  LogoName,
-  ExercizeName,
-}) => {
+export const ExerciseField = ({ LogoName, ExercizeName }: ExerciseProps) => {
   return (
     <Wrapper>
       <Header>

@@ -6,7 +6,7 @@ interface SearchProps {
   value?: string;
 }
 
-export const SearchInput: React.FC<SearchProps> = ({ onChange, value }) => {
+export const SearchInput = ({ onChange, value }: SearchProps) => {
   return (
     <InputField>
       <Search

@@ -9,13 +9,13 @@ interface InputProps {
   errorMessage?: string;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input = ({
   placeholder,
   value,
   type,
   onChange,
   errorMessage,
-}) => {
+}: InputProps) => {
   const [isValid, setIsValid] = useState(true);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
