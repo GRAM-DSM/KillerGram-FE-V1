@@ -1,21 +1,37 @@
 import styled from "styled-components";
+import * as XLSX from "xlsx";
 
+interface Participant {
+  name: string;
+}
 interface ExerciseProps {
   LogoName: string;
-  ExercizeName: string;
+  ExerciseName: string;
+  data: Participant[];
 }
 
-export const ExerciseField = ({ LogoName, ExercizeName }: ExerciseProps) => {
+export const ExerciseField = ({
+  LogoName,
+  ExerciseName,
+  data,
+}: ExerciseProps) => {
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    XLSX.writeFile(workbook, `${ExerciseName}.xlsx`);
+  };
   return (
     <Wrapper>
       <Header>
         <ImgField>
           <ExImg src={LogoName} />
         </ImgField>
-        <Title>{ExercizeName}</Title>
+        <Title>{ExerciseName}</Title>
       </Header>
       <BtnField>
-        <ExcelBtn>엑셀 다운로드</ExcelBtn>
+        <ExcelBtn onClick={exportToExcel}>엑셀 다운로드</ExcelBtn>
       </BtnField>
     </Wrapper>
   );
