@@ -3,26 +3,43 @@ import styled from "styled-components";
 import { LogoImg } from "../assets";
 import { Button, Input } from "../components/index";
 import { useNavigate } from "react-router-dom";
+import { cookies, login } from "../apis/auth";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({ account_id: "", password: "" });
   const navigate = useNavigate();
   const onEmail = (value: string): boolean => {
-    setEmail(value);
-    if (value.indexOf("@dsm.hs.kr") != -1) {
-      return true;
-    } else {
-      return false;
-    }
+    const isValidEmail = value.includes("@dsm.hs.kr");
+
+    setData(prevData => ({
+      ...prevData,
+      account_id: value,
+    }));
+
+    return isValidEmail;
   };
   const onPassword = (value: string): boolean => {
-    setPassword(value);
+    setData(prevData => ({
+      ...prevData,
+      password: value,
+    }));
     return false;
   };
 
-  const onLogin = () => {
-    navigate("/excelDown");
+  const onLogin = async () => {
+    if (!data.account_id || !data.password) {
+      alert("이메일과 비밀번호를 입력해 주세요.");
+      return;
+    }
+
+    try {
+      const res = await login(data);
+      cookies.set("accessToken", res.data.accessToken);
+      navigate("/excelDown");
+    } catch (err) {
+      alert("로그인에 실패했습니다.");
+      console.error(err);
+    }
   };
 
   return (
@@ -35,14 +52,14 @@ export const Login = () => {
               type="text"
               placeholder="이메일을 입력해 주세요"
               onChange={onEmail}
-              value={email}
+              value={data.account_id}
               errorMessage="이메일이 일치하지 않습니다"
             />
             <Input
               type="password"
               placeholder="비밀번호를 입력해 주세요"
               onChange={onPassword}
-              value={password}
+              value={data.password}
               errorMessage="비밀번호를 입력해 주세요"
             />
           </InputContainer>
