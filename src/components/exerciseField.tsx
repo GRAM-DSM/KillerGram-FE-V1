@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as XLSX from "xlsx";
 
 interface Participant {
-  name: string;
+  "운동 참여자": string;
 }
 interface ExerciseProps {
   LogoName: string;
