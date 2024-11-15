@@ -3,7 +3,7 @@ import { Cookies } from "react-cookie";
 
 const router = "users";
 export const cookies = new Cookies();
-const baseUrl = "https://japan-8911-deploynow.ncloud.sbs";
+const baseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 
 const api: AxiosInstance = axios.create({
   baseURL: baseUrl,
