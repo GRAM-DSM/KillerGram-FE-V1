@@ -1,27 +1,29 @@
 import styled from "styled-components";
 import * as XLSX from "xlsx";
+import { cookies, getExcel } from "../apis/auth";
 
-interface Participant {
-  "운동 참여자": string;
-}
 interface ExerciseProps {
   LogoName: string;
   ExerciseName: string;
-  data: Participant[];
 }
 
-export const ExerciseField = ({
-  LogoName,
-  ExerciseName,
-  data,
-}: ExerciseProps) => {
-  const exportToExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(data);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+export const ExerciseField = ({ LogoName, ExerciseName }: ExerciseProps) => {
+  const onGetExcel = async () => {
+    try {
+      const token = cookies.get("accessToken");
+      const res = await getExcel({ sport: ExerciseName }, token);
 
-    XLSX.writeFile(workbook, `${ExerciseName}.xlsx`);
+      const worksheet = XLSX.utils.json_to_sheet(res.data);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+      XLSX.writeFile(workbook, `${ExerciseName}.xlsx`);
+    } catch (err) {
+      alert("엑셀 데이터 요청에 실패했습니다.");
+      console.error(err);
+    }
   };
+
   return (
     <Wrapper>
       <Header>
@@ -31,7 +33,7 @@ export const ExerciseField = ({
         <Title>{ExerciseName}</Title>
       </Header>
       <BtnField>
-        <ExcelBtn onClick={exportToExcel}>엑셀 다운로드</ExcelBtn>
+        <ExcelBtn onClick={onGetExcel}>엑셀 다운로드</ExcelBtn>
       </BtnField>
     </Wrapper>
   );
